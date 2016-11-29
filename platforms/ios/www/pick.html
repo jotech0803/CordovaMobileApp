@@ -33,7 +33,7 @@
                 localStorage.setItem("LocalData", data);
                 console.log(data);
             }
-        </script>
+      </script>
             <table>
                     <tr>
                         <th>Order</th>
@@ -43,13 +43,13 @@
                        
                     </tr>
                     <tr>
-                        <td>  </td>
+                        <td><script>"orders1"</script></td>
                         <td>4</td>
                         <td>2</td>
                         <td><a target="_blank" onclick="pick();" style="text-decoration: none"><button>Pick</button></a></td>
                     </tr>
                     <tr>
-                        <td>544326</td>
+                        <td><script id=orders>"orders2"</script></td>
                         <td>4</td>
                         <td>2</td>
                          <td><a target="_blank" onclick="pick();" style="text-decoration: none"><button>Pick</button></a></td>
@@ -87,8 +87,10 @@
 
 <p id="orders"></p>
 <script>
-    <p id="demo"></p>
+    <p id="orders"></p>
     var orders = ["12345", "12346", "12347", "12348", "12349"];
+    var order1 = orders[0];
+    var order2 = orders[1];
     document.getElementById("orders").innerHTML = orders;
     </script>
 
