@@ -42,31 +42,14 @@
                         <th>Status</th>
                        
                     </tr>
-                    <tr>
-                        <td>  </td>
-                        <td>4</td>
-                        <td>2</td>
-                        <td><a target="_blank" onclick="pick();" style="text-decoration: none"><button>Pick</button></a></td>
-                    </tr>
-                    <tr>
-                        <td>544326</td>
-                        <td>4</td>
-                        <td>2</td>
-                         <td><a target="_blank" onclick="pick();" style="text-decoration: none"><button>Pick</button></a></td>
-                    </tr>
-                    <tr>
-                        <td>544327</td>
-                        <td>4</td>
-                        <td>6</td>
-                         <td><a target="_blank" onclick="pick();" style="text-decoration: none"><button>Pick</button></a></td>
-                         </tr>
-                    <tr>
-                        <td>544385</td>
-                        <td>4</td>
-                        <td>2</td>
-                        <td><a target="_blank" onclick="pick();" style="text-decoration: none"><button>Pick</button></a></td>
-                    </tr>
-            </div>
+                    <tr id="orders0"></tr>
+                    <tr id="orders1"></tr>
+                    <tr id="orders2"></tr>
+                    <tr id="orders3"></tr>
+                    <tr id="orders4"></tr>
+
+
+        </div>
         <div>
             <table>
                 <tr>
@@ -87,9 +70,13 @@
 
 <p id="orders"></p>
 <script>
-    <p id="demo"></p>
-    var orders = ["12345", "12346", "12347", "12348", "12349"];
-    document.getElementById("orders").innerHTML = orders;
+    
+    var orders = [["12345",4,2,"To Pick"], ["12346",4,2,"To Pick"], ["12347",4,2,"To Pick"], ["12348",4,2,"To Pick"], ["12349",4,2,"To Pick"]];
+
+    document.getElementById('orders0').innerHTML = '<td>' + orders[0][0] + '</td><td>' + orders[0][1] + '</td><td>' + orders[0][2] + '</td><td>' + orders[0][3] + '</td>';
+    
+
+
     </script>
 
 
