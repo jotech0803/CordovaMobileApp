@@ -28,6 +28,8 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
+        QRScanner.prepare(onDone);
+        
     },
 
     // Update DOM on a Received Event
