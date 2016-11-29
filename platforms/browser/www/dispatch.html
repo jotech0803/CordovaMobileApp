@@ -17,68 +17,52 @@
             <script type="text/javascript" src="cordova.js"></script>
             <script type="text/javascript" src="js/scan.js"></script>
 
-                    <table>
-                        <tr>
-                            <th>Order  </th>
-                            <th>Aisle  </th>
-                            <th>Shelf  </th>
-                            <th>Status  </th>
-                            
-                        </tr>
-                        <tr>
-                            <td>544325</td>
-                            <td>4</td>
-                            <td>2</td>
-                            <td><a target="_blank" onclick="despatch();" style="text-decoration: none"><button>Despatch</button></a></td>
-                        </tr>
-                        <tr>
-                            <td>544326</td>
-                            <td>4</td>
-                            <td>2</td>
-                            <td><a target="_blank" onclick="despatch();" style="text-decoration: none"><button>Despatch</button></a></td>
-                            
-                        </tr>
-                        <tr>
-                            <td>544327</td>
-                            <td>4</td>
-                            <td>6</td>
-                            <td><a target="_blank" onclick="despatch();" style="text-decoration: none"><button>Despatch</button></a></td>
-                        </tr>
-                        <tr>
-                            <td>544385</td>
-                            <td>4</td>
-                            <td>2</td>
-                            <td><a target="_blank" onclick="despatch();" style="text-decoration: none"><button>Despatch</button></a></td>
-                            
-                        </tr>
-                        </div>
-                    <div>
-                    <table>
-                        <tr>
-                            <th><form action="dashboard.html">
-                                <div class="container">
-                                    <button type="submit">Back</button>
-                                    </form>
-                            </th>
-                            <th><form action="index.html">
-                                <div class="container">
-                                    <button type="submit">Home</button>
-                                    </form>
-                            </th>
-                        </tr>
-                    </table>
-                    </div>
-
+</script>
+<table>
+    <tr>
+        <th>Order</th>
+        <th>Town</th>
         
         
-                      <script>
-                if(localStorage.getItem("LocalData") == null){
-                    var data = [];
-                    data = JSON.stringify(data);
-                    localStorage.setItem("LocalData", data);
-                    console.log(data);
-                }
+    </tr>
+    
+    
+    <tr id="dispatches0"></tr>
+    <tr id="dispatches1"></tr>
+    <tr id="dispatches2"></tr>
+    <tr id="dispatches3"></tr>
+    <tr id="dispatches4"></tr>
+    
+</table>
+    <table>
+       
+            <tr><form action="dashboard.html">
+                    <button type="submit">Back</button>
+                    </form>
+            </tr>
+            <tr><form action="index.html">
+                    <button type="submit">Home</button>
+                    </form>
+            </tr>
+        
+    </table>
+</div>
+        </div>
+        
+        <p id="dispatches"></p>
+        <script>
+            
+            var dispatches = [["12348","Leeds"], ["12349","Bradford"], ["12350","London"], ["12352","York"], ["12353","Hull"]];
+            
+            document.getElementById('dispatches0').innerHTML = '<td>' + dispatches[0][0] + '</td><td>' + dispatches[0][1] + '</td><td>' + '</td><a target="_blank" onclick="despatch();" style="text-decoration: none"><button type="pickDespatch">Despatch</button></a><td>';
+            document.getElementById('dispatches1').innerHTML = '<td>' + dispatches[1][0] + '</td><td>' + dispatches[1][1] + '</td><td>' + '</td><a target="_blank" onclick="despatch();" style="text-decoration: none"><button type="pickDespatch">Despatch</button></a><td>';
+            document.getElementById('dispatches2').innerHTML = '<td>' + dispatches[2][0] + '</td><td>' + dispatches[2][1] + '</td><td>' + '</td><a target="_blank" onclick="despatch();" style="text-decoration: none"><button type="pickDespatch">Despatch</button></a><td>';
+            document.getElementById('dispatches3').innerHTML = '<td>' + dispatches[3][0] + '</td><td>' + dispatches[3][1] + '</td><td>' + '</td><a target="_blank" onclick="despatch();" style="text-decoration: none"><button type="pickDespatch">Despatch</button></a><td>';
+            document.getElementById('dispatches4').innerHTML = '<td>' + dispatches[4][0] + '</td><td>' + dispatches[4][1] + '</td><td>' + '</td><a target="_blank" onclick="despatch();" style="text-decoration: none"><button type="pickDespatch">Despatch</button></a><td>';
             </script>
-                
-                       </body>
+        
+      
+        
+        
+    </body>
 </html>
