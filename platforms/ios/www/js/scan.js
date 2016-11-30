@@ -1,15 +1,35 @@
 
-function pick(){
+function pick(index){
     
     cordova.plugins.barcodeScanner.scan(
                                         function (result) {
                                         var value = result.text
-                                          alert("Picked " + value);
-                                      
+                                        /* get hold of warehouse array,
+                                         change status from topick to toDespatch
+                                         update array*/
+                                        
+                                        var warehouse = JSON.parse(localStorage.warehouse);
+                                        
+                                        warehouse[index][4] = 'toDespatch';
+                                    
+                                        
+                                        localStorage.warehouse = JSON.stringify(warehouse);
+                                        
+                                        console.log(warehouse[0][4]);
+                                        
+                                        alert("Picked " + value + "Order # " + warehouse[0][0] + "Status: " + warehouse[0][4]);
+                                        
+                                        warehouse = JSON.parse(localStorage.warehouse);
+                                 
+                                        
                                         },
+                                        
                                         function (error) {
                                           alert("Scanning failed: " + error);
                                         });
+    location.reload();
+
+    
     }
 
 function despatch(){
@@ -24,44 +44,3 @@ function despatch(){
                                         alert("Scanning failed: " + error);
                                         });
 }
-
-
-/*
-function scan(){
-    if(localStorage.getItem("LocalData") == null){
-        var data = [];
-        data = JSON.stringify(data);
-        localStorage.setItem("LocalData", data);
-    }
-    cordova.plugins.barcodeScanner.scan(
-       function (result) {
-        if(!result.cancelled){
-           if(result.format == "QR_CODE"){
-             navigator.notification.prompt("Please enter name of data",  function(input){
-               var name = input.input1;
-               var value = result.text;
-               var data = localStorage.getItem("LocalData");
-            
-         
-                data = JSON.parse(data);
-                data[data.length] = [name, value];
-                localStorage.setItem("LocalData", JSON.stringify(data));
-                alert("Done");
-                });
-           }
-         }
-       },
-       function (error) {
-         alert("Scanning failed: " + error);
-       });
-           console.log('Hello World!');
-    console.log(data);
-    
-}
-
-function display(){
-    console.log(data);
-}
-
-                                        
-        */
