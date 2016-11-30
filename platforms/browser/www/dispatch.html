@@ -16,6 +16,8 @@
             <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
             <script type="text/javascript" src="cordova.js"></script>
             <script type="text/javascript" src="js/scan.js"></script>
+            
+       <script>     var warehouse = JSON.parse(localStorage.warehouse); /* accessing the string from pick.js and turning it back into an array so the info can be used in html*/
 
 </script>
 <table>
@@ -52,13 +54,10 @@
         <p id="dispatches"></p>
         <script>
             
-            var dispatches = [["12348","Leeds"], ["12349","Bradford"], ["12350","London"], ["12352","York"], ["12353","Hull"]];
             
-            document.getElementById('dispatches0').innerHTML = '<td>' + dispatches[0][0] + '</td><td>' + dispatches[0][1] + '</td><td>' + '</td><a target="_blank" onclick="despatch();" style="text-decoration: none"><button type="pickDespatch">Despatch</button></a><td>';
-            document.getElementById('dispatches1').innerHTML = '<td>' + dispatches[1][0] + '</td><td>' + dispatches[1][1] + '</td><td>' + '</td><a target="_blank" onclick="despatch();" style="text-decoration: none"><button type="pickDespatch">Despatch</button></a><td>';
-            document.getElementById('dispatches2').innerHTML = '<td>' + dispatches[2][0] + '</td><td>' + dispatches[2][1] + '</td><td>' + '</td><a target="_blank" onclick="despatch();" style="text-decoration: none"><button type="pickDespatch">Despatch</button></a><td>';
-            document.getElementById('dispatches3').innerHTML = '<td>' + dispatches[3][0] + '</td><td>' + dispatches[3][1] + '</td><td>' + '</td><a target="_blank" onclick="despatch();" style="text-decoration: none"><button type="pickDespatch">Despatch</button></a><td>';
-            document.getElementById('dispatches4').innerHTML = '<td>' + dispatches[4][0] + '</td><td>' + dispatches[4][1] + '</td><td>' + '</td><a target="_blank" onclick="despatch();" style="text-decoration: none"><button type="pickDespatch">Despatch</button></a><td>';
+            document.getElementById('dispatches0').innerHTML = '<td>' + warehouse[5][0] + '</td><td>' + warehouse[5][3] + '</td><td>' + '</td><a target="_blank" onclick="despatch();" style="text-decoration: none"><button type="pickDespatch">'+ warehouse[5][4] +'</button></a><td>';
+            document.getElementById('dispatches1').innerHTML = '<td>' + warehouse[6][0] + '</td><td>' + warehouse[6][3] + '</td><td>' + '</td><a target="_blank" onclick="despatch();" style="text-decoration: none"><button type="pickDespatch">'+ warehouse[6][4] +'</button></a><td>';
+            
             </script>
         
       

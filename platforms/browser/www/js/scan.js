@@ -1,12 +1,26 @@
 
-function pick(){
+function pick(index){
     
     cordova.plugins.barcodeScanner.scan(
                                         function (result) {
                                         var value = result.text
-                                          alert("Picked " + value);
+                                        /* get hold of warehouse array,
+                                         change status from topick to toDespatch
+                                         update array*/
+                                        
+                                        var warehouse = JSON.parse(localStorage.warehouse);
+                                        
+                                        warehouse[index][4] = 'toDespatch';
+                                    
+                                        
+                                        localStorage.warehouse = JSON.stringify(warehouse);
+                                        
+                                        console.log(warehouse[0][4]);
+                                        
+                                        alert("Picked " + value);
                                       
                                         },
+                                        
                                         function (error) {
                                           alert("Scanning failed: " + error);
                                         });
