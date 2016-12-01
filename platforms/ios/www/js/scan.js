@@ -1,5 +1,5 @@
 
-function pick(index){
+function picker(index){
     
     cordova.plugins.barcodeScanner.scan(
                                         function (result) {
@@ -15,9 +15,8 @@ function pick(index){
                                         
                                         localStorage.warehouse = JSON.stringify(warehouse);
                                         
-                                        console.log(warehouse[0][4]);
                                         
-                                        alert("Picked " + value + "Order # " + warehouse[0][0] + "Status: " + warehouse[0][4]);
+                                        alert("Picked " + value + "Order # " + warehouse[index][0] + "Status: " + warehouse[index][4]);
                                         
                                         warehouse = JSON.parse(localStorage.warehouse);
                                  
@@ -32,15 +31,31 @@ function pick(index){
     
     }
 
-function despatch(){
+function despatcher(index){
     
     cordova.plugins.barcodeScanner.scan(
                                         function (result) {
                                         var value = result.text
-                                        alert("Despatched " + value);
+                                    
                                         
+                                        var warehouse = JSON.parse(localStorage.warehouse);
+                                        
+                                        warehouse[index][4] = 'Completed';
+                                        
+                                        
+                                        localStorage.warehouse = JSON.stringify(warehouse);
+                                        
+                                        
+                                        alert("Dispatched " + value + "Order # " + warehouse[index][0] + "Status: " + warehouse[index][4]);
+                                        
+                                        warehouse = JSON.parse(localStorage.warehouse);
+                                        
+                                        
+        
                                         },
                                         function (error) {
                                         alert("Scanning failed: " + error);
                                         });
+    location.reload();
+    
 }

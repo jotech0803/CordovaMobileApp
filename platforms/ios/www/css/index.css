@@ -28,6 +28,25 @@ body {
 }
 
 
+
+
+tbody{
+    position:absolute;           /* position in the center of the screen */
+    left:46%;
+    top:40%;
+    height:10px;                   /* text area height */
+    width:20px;
+}
+
+td{
+    
+}
+
+tr{
+    
+}
+
+
 button[type=submit] {
     height: 40px;
     width: 100px;
@@ -60,6 +79,12 @@ input[type="password"] {
     
 }
 
+
+
+
+
+
+
 th {
     text-transform:uppercase;
     letter-spacing: 0.1em;
@@ -68,6 +93,7 @@ th {
     text-align:left;
     
 }
+
 
 
 

@@ -12,13 +12,22 @@
                         </head>
     <body>
         <div class="app">
-            <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-            <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+          
             <script type="text/javascript" src="cordova.js"></script>
             <script type="text/javascript" src="js/scan.js"></script>
             
        <script>     var warehouse = JSON.parse(localStorage.warehouse); /* accessing the string from pick.js and turning it back into an array so the info can be used in html*/
-
+           
+           var despatch = [];
+           
+           for (var i=0; i< warehouse.length; i++) {
+               
+               if (warehouse[i][4] == "toDespatch") {
+                   despatch.push(warehouse[i]);
+                   warehouse[i][5] = i;
+                   pick.push(warehouse[i]);
+               }
+           }
 </script>
        <script>
            
@@ -58,7 +67,7 @@
                
                /*creating all cells*/
                  
-               for (var i = 0; i < warehouse.length; i++) {
+               for (var i = 0; i < despatch.length; i++) {
                    /* creates a table row */
                    
                    var row = document.createElement('tr');
@@ -69,16 +78,16 @@
                     the end of the table row*/
                    
                    var cell = document.createElement('td');
-                   var cellText = document.createTextNode( warehouse[i][0]);
+                   var cellText = document.createTextNode(despatch[i][0]);
                    cell.appendChild(cellText);
                    row.appendChild(cell);
                    var cell = document.createElement('td');
-                   var cellText = document.createTextNode( warehouse[i][3]);
+                   var cellText = document.createTextNode(despatch[i][3]);
                    cell.appendChild(cellText);
                    row.appendChild(cell);
                    var cell = document.createElement('td');
-                   var cellText = document.createTextNode(warehouse[i][4]);
-                   cell.appendChild(cellText);
+                   cell.innerHTML = '<button onclick="despatcher('+ despatch[i][5] +')">' + despatch[i][4] + '</button>';
+                   row.appendChild(cell);
                    row.appendChild(cell);
                        
                     

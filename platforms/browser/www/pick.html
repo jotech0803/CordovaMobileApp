@@ -18,9 +18,23 @@
             
             <script>     var warehouse = JSON.parse(localStorage.warehouse); /* accessing the string from pick.js and turning it back into an array so the info can be used in html*/
                 
+                var pick = [];
+                
+                for (var i=0; i< warehouse.length; i++) {
+                    
+                    if (warehouse[i][4] == "toPick") {
+                        warehouse[i][5] = i;
+                        pick.push(warehouse[i]);
+                        
+                    }
+                }
+            console.log(pick);
+            console.log(warehouse);
+                
                 </script>
     
-        
+    
+    
         <script>
         
         function generate_table() {
@@ -65,7 +79,7 @@
             
             /*creating all cells*/
               
-            for (var i = 0; i < warehouse.length; i++) {
+            for (var i = 0; i < pick.length; i++) {
                 /* creates a table row */
                 
                 var row = document.createElement('tr');
@@ -76,19 +90,19 @@
             the end of the table row*/
                     
             var cell = document.createElement('td');
-            var cellText = document.createTextNode( warehouse[i][0]);
+            var cellText = document.createTextNode(pick[i][0]);
             cell.appendChild(cellText);
             row.appendChild(cell);
             var cell = document.createElement('td');
-            var cellText = document.createTextNode( warehouse[i][1]);
+            var cellText = document.createTextNode(pick[i][1]);
             cell.appendChild(cellText);
             row.appendChild(cell);
             var cell = document.createElement('td');
-            var cellText = document.createTextNode(warehouse[i][2]);
+            var cellText = document.createTextNode(pick[i][2]);
             cell.appendChild(cellText);
             row.appendChild(cell);
             var cell = document.createElement('td');
-            cell.innerHTML = '<button onclick="pick()">' + warehouse[i][4] + '</button>';
+            cell.innerHTML = '<button onclick="picker('+ pick[i][5] +')">' + pick[i][4] + '</button>';
             row.appendChild(cell);
                         
                      
@@ -124,6 +138,11 @@
                     <tr><form action="index.html">
                             <button type="submit">Home</button>
                             </form>
+                    
+                </tr>
+                    <tr><form action="dispatch.html">
+                        <button type="submit">Despatch</button>
+                    </form>
                     
                 </tr>
             </table>

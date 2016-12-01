@@ -12,30 +12,103 @@
                         </head>
     <body>
         <div class="app">
-            <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-            <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+          
             <script type="text/javascript" src="cordova.js"></script>
             <script type="text/javascript" src="js/scan.js"></script>
             
        <script>     var warehouse = JSON.parse(localStorage.warehouse); /* accessing the string from pick.js and turning it back into an array so the info can be used in html*/
-
+           
+           var despatch = [];
+           
+           for (var i=0; i< warehouse.length; i++) {
+               
+               if (warehouse[i][4] == "toDespatch") {
+                   despatch.push(warehouse[i]);
+                   warehouse[i][5] = i;
+                   pick.push(warehouse[i]);
+               }
+           }
 </script>
-<table>
-    <tr>
-        <th>Order</th>
-        <th>Town</th>
-        
-        
-    </tr>
-    
-    
-    <tr id="dispatches0"></tr>
-    <tr id="dispatches1"></tr>
-    <tr id="dispatches2"></tr>
-    <tr id="dispatches3"></tr>
-    <tr id="dispatches4"></tr>
-    
-</table>
+       <script>
+           
+           function generate_table() {
+               
+                 /*get the reference for the body*/
+               
+                 var body = document.getElementsByTagName('body')[0];
+                
+                 /*creates a <table> element and a <tbody> element*/
+               
+               var tbl     = document.createElement('table');
+               var tblBody = document.createElement('tbody');
+               var row = document.createElement('tr');
+               var cell = document.createElement('th');
+               var cellText = document.createTextNode( 'order number' );
+               
+               cell.appendChild(cellText);
+               row.appendChild(cell);
+               tblBody.appendChild(row);
+               
+               
+               var cell = document.createElement('th');
+               var cellText = document.createTextNode( 'location' );
+               cell.appendChild(cellText);
+               row.appendChild(cell);
+               tblBody.appendChild(row);
+               
+               
+               
+               var cell = document.createElement('th');
+               var cellText = document.createTextNode( 'status' );
+               cell.appendChild(cellText);
+               row.appendChild(cell);
+               tblBody.appendChild(row);
+               
+               
+               /*creating all cells*/
+                 
+               for (var i = 0; i < despatch.length; i++) {
+                   /* creates a table row */
+                   
+                   var row = document.createElement('tr');
+                    
+                      
+                   /*Create a <td> element and a text node, make the text
+                    node the contents of the <td>, and put the <td> at
+                    the end of the table row*/
+                   
+                   var cell = document.createElement('td');
+                   var cellText = document.createTextNode(despatch[i][0]);
+                   cell.appendChild(cellText);
+                   row.appendChild(cell);
+                   var cell = document.createElement('td');
+                   var cellText = document.createTextNode(despatch[i][3]);
+                   cell.appendChild(cellText);
+                   row.appendChild(cell);
+                   var cell = document.createElement('td');
+                   cell.innerHTML = '<button onclick="despatcher('+ despatch[i][5] +')">' + despatch[i][4] + '</button>';
+                   row.appendChild(cell);
+                   row.appendChild(cell);
+                       
+                    
+                   /*add the row to the end of the table body*/
+                   tblBody.appendChild(row);
+                   
+                     }
+                
+               /*put the <tbody> in the <table>*/
+               tbl.appendChild(tblBody);
+               /*appends <table> into <body>*/
+               body.appendChild(tbl);
+               /*sets the border attribute of tbl to 2;*/
+               tbl.setAttribute('border', '2');
+               
+               
+           }
+       </script>
+       
+       <script>generate_table()</script>
+       
     <table>
        
             <tr><form action="dashboard.html">
@@ -47,18 +120,7 @@
                     </form>
             </tr>
         
-    </table>
-</div>
-        </div>
-        
-        <p id="dispatches"></p>
-        <script>
-            
-            
-            document.getElementById('dispatches0').innerHTML = '<td>' + warehouse[5][0] + '</td><td>' + warehouse[5][3] + '</td><td>' + '</td><a target="_blank" onclick="despatch();" style="text-decoration: none"><button type="pickDespatch">'+ warehouse[5][4] +'</button></a><td>';
-            document.getElementById('dispatches1').innerHTML = '<td>' + warehouse[6][0] + '</td><td>' + warehouse[6][3] + '</td><td>' + '</td><a target="_blank" onclick="despatch();" style="text-decoration: none"><button type="pickDespatch">'+ warehouse[6][4] +'</button></a><td>';
-            
-            </script>
+    
         
       
         
